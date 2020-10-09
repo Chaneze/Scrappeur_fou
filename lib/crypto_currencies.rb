@@ -1,6 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
+# Methode qui permet de recuperer le nom des crypto sous forme d'array
 def currency_names(page)
     currency_names = page.xpath('//*[@id="__next"]/div[1]/div[2]/div[1]/div[2]/div/div[2]/div[3]/div/table/tbody/tr/td[3]/div')
     array_names = Array.new
@@ -12,6 +13,7 @@ def currency_names(page)
     return array_names
 end
 
+# Methode qui permet de recuperer la valeu des crypto sous forme d'array
 def currency_values(page)
     currency_values = page.xpath('/html/body/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[2]/div[3]/div/table/tbody/tr/td[5]/a')
     array_values = Array.new
@@ -24,6 +26,7 @@ def currency_values(page)
     return array_values
 end
 
+# Methode qui permet de creer des hash (name, value) pour chaque crypto et de les mettre sous forme d'array par la suite
 def crypto_scrapper
     page = Nokogiri::HTML(URI.open("https://coinmarketcap.com/all/views/all/"))
     hash_crypto = Hash[currency_names(page).zip(currency_values(page))]
@@ -37,7 +40,7 @@ def crypto_scrapper
 end
 
 def perform
-    crypto_scrapper
+    puts crypto_scrapper
 end
 
 perform

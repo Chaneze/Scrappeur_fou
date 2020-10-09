@@ -47,7 +47,7 @@ def hash_name_mail
 end
 
 def perform
-    hash_name_mail
+    puts hash_name_mail
 end
 
 perform

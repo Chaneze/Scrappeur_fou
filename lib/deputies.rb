@@ -24,17 +24,13 @@ def array_deputies
     i = 0
     hrefs.each do |url|
         array_deputy[i] = get_deputy_info(url)
-# tests permettant de verifier qu'a chaque tour, les infos d'un nouveau deputes sont rajouter dans l'array
-#        puts array_deputy
-#        puts
-#        puts "-------"
         i = i + 1
     end
     return array_deputy
 end
 
 def perform
-    array_deputies
+    puts array_deputies
 end
 
 perform
